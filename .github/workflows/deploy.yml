@@ -39,7 +39,7 @@ jobs:
       - name: 依赖安装
         run: pnpm install
       - name: Vitepress 构建
-        run: pnpm run build
+        run: pnpm run docs:build
       - name: 制品上传
         uses: actions/upload-pages-artifact@v3
         with:
