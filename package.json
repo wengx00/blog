@@ -39,6 +39,7 @@
     "vitepress": "^1.4.2",
     "vue-tsc": "^2.0.6"
   },
+  "packageManager": "pnpm@8.15.0",
   "lint-staged": {
     "*.{js,jsx,ts,tsx,mjs,cjs}": [
       "node --max_old_space_size=8192 ./node_modules/eslint/bin/eslint.js --fix-dry-run --color --cache --quiet"
