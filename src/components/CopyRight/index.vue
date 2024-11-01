@@ -3,9 +3,8 @@
     本文为 <a :href="theme.actions?.github">ccweng</a> 原创文章，遵循
     <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans">
       CC 4.0 BY-SA </a
-    >版权协议，转载请附上原文出处链接及本声明。原文链接：<a :href="address">{{
-      address
-    }}</a>
+    >版权协议，转载请附上原文出处链接及本声明。<br />
+    原文链接：<a :href="address">{{ address }}</a>
   </div>
 </template>
 
