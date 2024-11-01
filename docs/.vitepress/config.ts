@@ -8,7 +8,7 @@ import { getFileTimeInfo } from './utils';
 export default {
   title: "CC's Blog",
   description: 'Share tech and life.',
-  base: '/blog/',
+  base: '/',
   head: [
     [
       'meta',
