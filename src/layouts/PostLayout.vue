@@ -26,10 +26,10 @@ const { page } = useData();
 const { timeInfo } = page.value as any;
 
 const createdAt =
-  timeInfo.createdAt &&
+  timeInfo?.createdAt &&
   dateUtils.getDateTimeString(new Date(timeInfo.createdAt));
 const updatedAt =
-  timeInfo.updatedAt &&
+  timeInfo?.updatedAt &&
   dateUtils.getDateTimeString(new Date(timeInfo.updatedAt));
 </script>
 
