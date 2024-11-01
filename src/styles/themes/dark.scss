@@ -1,0 +1,62 @@
+html[theme-mode='dark'] {
+  --brand-color: #61afef;
+  --brand-color-1: #569cd6;
+  --brand-color-2: #4080a8;
+  --brand-color-3: #3876a8;
+  --brand-color-4: #306e98;
+  --brand-color-5: #286090;
+  --brand-color-6: #205278;
+  --brand-color-7: #19456b;
+  --brand-color-8: #12365e;
+  --brand-color-9: #0c2845;
+  --danger-color: #e06c75;
+  --danger-color-1: #d15c65;
+  --danger-color-2: #c14c55;
+  --danger-color-3: #b23c45;
+  --danger-color-4: #a22c35;
+  --danger-color-5: #921c25;
+  --danger-color-6: #820c1a;
+  --danger-color-7: #720c12;
+  --danger-color-8: #620c0b;
+  --danger-color-9: #520c06;
+  --warning-color: #e5c07b;
+  --warning-color-1: #d6a656;
+  --warning-color-2: #c68c42;
+  --warning-color-3: #b67232;
+  --warning-color-4: #a65c29;
+  --warning-color-5: #964c1e;
+  --warning-color-6: #863c15;
+  --warning-color-7: #764011;
+  --warning-color-8: #66330e;
+  --warning-color-9: #5b2b0a;
+  --success-color: #98c379;
+  --success-color-1: #82a96f;
+  --success-color-2: #729164;
+  --success-color-3: #5a805d;
+  --success-color-4: #527056;
+  --success-color-5: #426047;
+  --success-color-6: #325037;
+  --success-color-7: #224027;
+  --success-color-8: #18411b;
+  --success-color-9: #033309;
+
+  --bg-color-component: #282c34;
+  --bg-color-component-hover: #333;
+  --bg-color-page: #1e1e1e;
+  --text-color-primary: #e1e1e1;
+  --text-color-secondary: #888;
+  --text-color-link: var(--brand-color);
+  --text-color-link-hover: var(--brand-color-1);
+  --border-color-level-1: #444;
+  --border-color-level-2: #555;
+
+  .shiki,
+  .shiki span {
+    color: var(--shiki-dark) !important;
+    // background-color: var(--bg-color-component);
+    /* 可选，用于定义字体样式 */
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
+}

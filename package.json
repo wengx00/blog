@@ -1,0 +1,47 @@
+{
+  "name": "cc-blog",
+  "version": "1.0.0",
+  "description": "",
+  "author": "ccweng",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "husky install",
+    "update:lockfile": "pnpm install --lockfile-only",
+    "docs:dev": "vitepress dev docs --host",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "dependencies": {
+    "@mdit/plugin-tasklist": "^0.13.1",
+    "pinia": "^2.2.5",
+    "tdesign-icons-vue-next": "^0.2.6",
+    "tdesign-vue-next": "^1.10.3",
+    "vue": "^3.5.12"
+  },
+  "devDependencies": {
+    "@cc-infra/eslint-config": "0.0.5",
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@types/node": "^20.3.1",
+    "@typescript-eslint/parser": "^7.16.1",
+    "cross-env": "^7.0.3",
+    "editorconfig": "^2.0.0",
+    "eslint": "8.57.0",
+    "eslint-plugin-vue": "^9.26.0",
+    "husky": "^8.0.3",
+    "prettier": "^3.0.0",
+    "sass-embedded": "^1.80.5",
+    "shiki": "^1.22.2",
+    "typescript": "^5.5.3",
+    "vitepress": "^1.4.2",
+    "vue-tsc": "^2.0.6"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,mjs,cjs}": [
+      "node --max_old_space_size=8192 ./node_modules/eslint/bin/eslint.js --fix-dry-run --color --cache --quiet"
+    ]
+  }
+}

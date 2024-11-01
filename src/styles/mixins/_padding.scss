@@ -1,0 +1,4 @@
+@mixin padding($padding: 1rem) {
+  box-sizing: border-box;
+  padding: $padding;
+}

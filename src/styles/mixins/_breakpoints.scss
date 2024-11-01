@@ -1,0 +1,21 @@
+@use 'sass:math';
+@use 'sass:color';
+@use 'sass:list';
+@use 'sass:meta';
+
+@mixin response($breakpoints) {
+  @if meta.type-of($breakpoints) == list and length($breakpoints) == 2 {
+    $min: nth($breakpoints, 1);
+    $max: nth($breakpoints, 2);
+
+    @media screen and (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if meta.type-of($breakpoints) == number {
+    @media screen and (max-width: $breakpoints) {
+      @content;
+    }
+  } @else {
+    @warn "`$breakpoints` is invalid.";
+  }
+}
