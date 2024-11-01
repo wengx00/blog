@@ -10,7 +10,7 @@ module.exports = {
   plugins: ['vue', '@typescript-eslint'],
   overrides: [
     {
-      files: ['docs/.vitepress/config.ts'],
+      files: ['docs/.vitepress/**/*.ts'],
       extends: ['plugin:@typescript-eslint/disable-type-checked'],
     },
     {

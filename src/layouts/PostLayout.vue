@@ -19,18 +19,12 @@ import { useData } from 'vitepress';
 
 import CopyRight from '@/components/CopyRight/index.vue';
 import SafeBottom from '@/components/SafeBottom/index.vue';
-import { dateUtils } from '@/utils';
 
 const { page } = useData();
 
 const { timeInfo } = page.value as any;
 
-const createdAt =
-  timeInfo?.createdAt &&
-  dateUtils.getDateTimeString(new Date(timeInfo.createdAt));
-const updatedAt =
-  timeInfo?.updatedAt &&
-  dateUtils.getDateTimeString(new Date(timeInfo.updatedAt));
+const { createdAt, updatedAt } = timeInfo || {};
 </script>
 
 <style scoped lang="scss">

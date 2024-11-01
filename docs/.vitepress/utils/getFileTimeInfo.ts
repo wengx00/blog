@@ -1,5 +1,5 @@
 import callBash from './callBash';
-import tryCatch from '../../../src/utils/tryCatch';
+import { tryCatch, dateUtils } from '../../../src/utils';
 
 export default async function getFileTimeInfo(path: string): Promise<{
   createdAt: string | null;
@@ -22,7 +22,7 @@ export default async function getFileTimeInfo(path: string): Promise<{
   const [createdAt, updatedAt] = result;
 
   return {
-    createdAt,
-    updatedAt,
+    createdAt: dateUtils.getDateTimeString(new Date(createdAt)),
+    updatedAt: dateUtils.getDateTimeString(new Date(updatedAt)),
   };
 }
