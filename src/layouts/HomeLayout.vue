@@ -14,6 +14,10 @@
 
 <script setup lang="ts">
 import { withBase } from 'vitepress';
+
+import { data } from '@/loaders/root.data.js';
+
+console.log('data-loader', data);
 </script>
 
 <style lang="scss" scoped></style>

@@ -3,6 +3,11 @@
     <div class="post-root__sidebar"></div>
     <div class="post-root__content">
       <Content />
+      <CopyRight />
+      <div v-if="createdAt || updatedAt" class="post-root__content_time">
+        <div v-if="createdAt !== updatedAt">创建于: {{ updatedAt }}</div>
+        <div v-else>更新于: {{ updatedAt }}</div>
+      </div>
       <SafeBottom />
     </div>
     <div class="post-root__menu"></div>
@@ -12,11 +17,20 @@
 <script setup lang="ts">
 import { useData } from 'vitepress';
 
+import CopyRight from '@/components/CopyRight/index.vue';
 import SafeBottom from '@/components/SafeBottom/index.vue';
+import { dateUtils } from '@/utils';
 
 const { page } = useData();
 
-console.log(page.value);
+const { timeInfo } = page.value as any;
+
+const createdAt =
+  timeInfo.createdAt &&
+  dateUtils.getDateTimeString(new Date(timeInfo.createdAt));
+const updatedAt =
+  timeInfo.updatedAt &&
+  dateUtils.getDateTimeString(new Date(timeInfo.updatedAt));
 </script>
 
 <style scoped lang="scss">
@@ -37,6 +51,13 @@ console.log(page.value);
 
     @include response($mobile) {
       @include padding(10px);
+    }
+
+    &_time {
+      @include flex(row, space-between, center);
+      @include padding(0 0 0 4px);
+      color: var(--td-text-color-secondary);
+      font-size: 12px;
     }
   }
 

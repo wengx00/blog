@@ -2,6 +2,8 @@ import { resolve } from 'path';
 
 import { tasklist } from '@mdit/plugin-tasklist';
 
+import { getFileTimeInfo } from './utils';
+
 // https://vitepress.dev/reference/site-config
 export default {
   title: "CC's Blog",
@@ -43,5 +45,11 @@ export default {
     image: {
       lazyLoading: true,
     },
+  },
+  async transformPageData(pageData: any) {
+    const { relativePath } = pageData;
+    return {
+      timeInfo: await getFileTimeInfo(resolve(__dirname, '../', relativePath)),
+    };
   },
 };
