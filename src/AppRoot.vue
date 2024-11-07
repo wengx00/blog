@@ -4,7 +4,10 @@
       <AppHeader />
     </div>
     <div class="app-root__content">
-      <template v-if="frontmatter.home">
+      <template v-if="page.isNotFound">
+        <NotFoundLayout />
+      </template>
+      <template v-else-if="frontmatter.home">
         <HomeLayout />
       </template>
       <template v-else>
@@ -20,21 +23,24 @@ import { onMounted } from 'vue';
 
 import AppHeader from './components/AppHeader/index.vue';
 import HomeLayout from './layouts/HomeLayout.vue';
+import NotFoundLayout from './layouts/NotFoundLayout.vue';
 import PostLayout from './layouts/PostLayout.vue';
 
 // https://vitepress.dev/reference/runtime-api#usedata
-const { frontmatter } = useData();
+const { frontmatter, page } = useData();
 
 onMounted(() => {
   console.log('%cfrontmatter', 'color: #2196f3;', frontmatter.value);
-  document.documentElement.setAttribute('theme-mode', 'light');
 });
 </script>
 
 <style lang="scss" scoped>
 .app-root {
+  display: contents;
   position: relative;
   width: 100%;
+  height: 100%;
+  overflow-y: visible;
 
   &__header {
     position: fixed;
@@ -45,9 +51,11 @@ onMounted(() => {
   }
 
   &__content {
-    width: 100%;
-    overflow-x: hidden;
     @include padding($headerHeight 0 0 0);
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: visible;
   }
 }
 </style>

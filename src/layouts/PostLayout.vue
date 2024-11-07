@@ -42,6 +42,7 @@ const { createdAt, updatedAt } = timeInfo || {};
     width: min($mobile, 100%);
     flex-shrink: 0;
     overflow-x: hidden;
+    @include padding(0 0 10px 0);
 
     @include response($mobile) {
       @include padding(10px);
