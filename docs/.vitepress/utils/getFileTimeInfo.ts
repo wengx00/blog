@@ -22,7 +22,11 @@ export default async function getFileTimeInfo(path: string): Promise<{
   const [createdAt, updatedAt] = result;
 
   return {
-    createdAt: dateUtils.getDateTimeString(new Date(createdAt)),
-    updatedAt: dateUtils.getDateTimeString(new Date(updatedAt)),
+    createdAt: dateUtils.getDateTimeString(new Date(createdAt), {
+      second: false,
+    }),
+    updatedAt: dateUtils.getDateTimeString(new Date(updatedAt), {
+      second: false,
+    }),
   };
 }

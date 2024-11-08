@@ -1,8 +1,4 @@
-# CC's Blog Todo
-
-[[TOC]]
-
-## Todo List
+# 站点 Todo
 
 - [x] 黑夜模式适配
 - [x] 行内代码块适配
@@ -19,25 +15,3 @@
 - [ ] 全站搜索
 - [ ] 博客主页
 
-![test-img](https://cdn.img2ipfs.com/ipfs/QmZDEJdGWgUJs4SQbouLfEwTV6bVSxEZ1Q1EpzS4iyV5tb?filename=Snipaste_2024-10-30_18-46-01.png)
-
-## Test Features
-
-::: code-group
-
-```js [config.js]
-console.log('Hello World');
-```
-
-```js [index.js]
-import { onMounted } from 'vue';
-
-onMounted(() => {
-  console.log('Hello World');
-  console.log('Hello World');
-  console.log('Hello World');
-  console.log('Hello World');
-});
-```
-
-:::

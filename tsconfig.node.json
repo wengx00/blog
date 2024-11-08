@@ -6,6 +6,9 @@
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "strict": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  "include": ["docs/.vitepress/**/*.ts", "src/utils/*.ts", "docs/.vitepress/utils/getFileTimeInfo.ts", "docs/.vitepress/utils/getFileTimeInfo.ts", "docs/.vitepress/utils/callBash.ts", "docs/.vitepress/utils/callBash.ts"]
+  "include": ["docs/.vitepress/**/*.mts", "docs/.vitepress/**/*.ts", "src/**/*.ts", "src/**/*.vue"]
 }
