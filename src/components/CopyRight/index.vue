@@ -10,20 +10,16 @@
 
 <script setup lang="ts">
 import { useData } from 'vitepress';
-import { computed, onBeforeMount, ref } from 'vue';
+import { computed, ref } from 'vue';
 
 const { page, site, theme } = useData();
 
-const remoteUrl = ref('https://wengx00.github.io');
+const remoteUrl = ref('https://www.ccweng.cc');
 
 const address = computed(
   () =>
     `${remoteUrl.value}${site.value.base}${page.value.relativePath.slice(0, -3)}`,
 );
-
-onBeforeMount(() => {
-  remoteUrl.value = window.location.origin;
-});
 </script>
 
 <style scoped lang="scss">

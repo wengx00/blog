@@ -31,6 +31,7 @@ const { frontmatter, page } = useData();
 
 onMounted(() => {
   console.log('%cfrontmatter', 'color: #2196f3;', frontmatter.value);
+  console.log('%cpage', 'color: #2196f3;', page.value);
 });
 </script>
 

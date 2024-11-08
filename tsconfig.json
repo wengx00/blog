@@ -32,7 +32,8 @@
     "./src/**/*.ts",
     "./src/**/*.tsx",
     "./src/**/*.vue",
+    "docs/.vitepress/**/*.mts", 
+    "docs/.vitepress/**/*.ts"
   ],
-  "exclude": ["node_modules", "dist", "**/.vitepress/cache", "**/.vitepress/dist"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "exclude": ["node_modules", "dist", "**/.vitepress/cache", "**/.vitepress/dist"]
 }

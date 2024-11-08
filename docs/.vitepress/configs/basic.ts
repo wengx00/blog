@@ -3,4 +3,5 @@ export default {
   description: 'Share tech and life.',
   lang: 'zh-CN',
   base: '/',
+  lastUpdated: true,
 };
