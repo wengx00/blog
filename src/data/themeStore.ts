@@ -1,10 +1,10 @@
 import { defineStore } from 'pinia';
-import { onMounted, onUnmounted, ref } from 'vue';
+import { onBeforeMount, onUnmounted, ref } from 'vue';
 
 export default defineStore(
   'theme',
   () => {
-    const currentTheme = ref<'light' | 'dark'>('light');
+    const currentTheme = ref<'light' | 'dark'>();
     const mediaQuery = ref<MediaQueryList>();
 
     const setTheme = (theme: 'light' | 'dark') => {
@@ -20,11 +20,16 @@ export default defineStore(
       setTheme(matches ? 'dark' : 'light');
     };
 
-    onMounted(() => {
-      document.documentElement.setAttribute('theme-mode', currentTheme.value);
+    onBeforeMount(() => {
       mediaQuery.value = window.matchMedia('(prefers-color-scheme: dark)');
-      setTheme(mediaQuery.value.matches ? 'dark' : 'light');
       mediaQuery.value.addEventListener('change', mediaMatchChangeHandler);
+      if (currentTheme.value) {
+        // 有缓存
+        document.documentElement.setAttribute('theme-mode', currentTheme.value);
+        return;
+      } 
+      // 没缓存的情况下根据主题设置
+      setTheme(mediaQuery.value.matches ? 'dark' : 'light');
     });
 
     onUnmounted(() => {
