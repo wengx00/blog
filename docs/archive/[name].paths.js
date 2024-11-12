@@ -1,8 +1,8 @@
-import { tagColor } from '../../src/config';
+import { TagEnum } from '../../src/config';
 
 export default {
   paths() {
-    return Object.keys(tagColor.background).map((name) => ({
+    return Object.values(TagEnum).map((name) => ({
       params: { name },
     }));
   },

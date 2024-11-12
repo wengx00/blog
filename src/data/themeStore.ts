@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { onMounted, onUnmounted, ref } from 'vue';
+import { onBeforeMount, onUnmounted, ref, watch } from 'vue';
 
 export default defineStore(
   'theme',
@@ -9,7 +9,6 @@ export default defineStore(
 
     const setTheme = (theme: 'light' | 'dark') => {
       currentTheme.value = theme;
-      document.documentElement.setAttribute('theme-mode', theme);
     };
 
     const mediaMatchChangeHandler = (event: MediaQueryListEvent) => {
@@ -20,14 +19,14 @@ export default defineStore(
       setTheme(matches ? 'dark' : 'light');
     };
 
-    onMounted(() => {
+    onBeforeMount(() => {
       mediaQuery.value = window.matchMedia('(prefers-color-scheme: dark)');
       mediaQuery.value.addEventListener('change', mediaMatchChangeHandler);
-      if (currentTheme.value) {
-        // 有缓存
-        setTheme(currentTheme.value);
-        return;
-      }
+      // if (currentTheme.value) {
+      //   // 有缓存
+      //   setTheme(currentTheme.value);
+      //   return;
+      // }
       // 没缓存的情况下根据主题设置
       setTheme(mediaQuery.value.matches ? 'dark' : 'light');
     });
@@ -38,14 +37,27 @@ export default defineStore(
       }
     });
 
+    watch(
+      () => currentTheme.value,
+      (theme) => {
+        if (!theme) {
+          return;
+        }
+        document.documentElement.setAttribute('theme-mode', theme);
+      },
+      {
+        immediate: true,
+      },
+    );
+
     return {
       currentTheme,
       setTheme,
     };
   },
   {
-    persist: {
-      pick: ['currentTheme'],
-    },
+    // persist: {
+    //   pick: ['currentTheme'],
+    // },
   },
 );

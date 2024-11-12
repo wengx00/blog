@@ -1,6 +1,6 @@
 import { createContentLoader } from 'vitepress';
 
-import { tagColor } from '../config';
+import { tagColor, TagEnum } from '../config';
 
 const { background: BG_COLOR_MAP, text: COLOR_MAP } = tagColor;
 
@@ -15,16 +15,16 @@ export default createContentLoader('**/*.md', {
         ? curTags
         : String(curTags).split(',');
       if (!tagList.length) {
-        tagList.push('未分类');
+        tagList.push(TagEnum.UNTAG);
       }
       const pureTagList = tagList
         .map((tag) => tag.trim())
         .filter(Boolean)
-        .map((tag) => {
+        .map((tag: TagEnum) => {
           const tagItem = {
             name: tag,
-            color: COLOR_MAP[tag] || COLOR_MAP['未分类'],
-            bgColor: BG_COLOR_MAP[tag] || BG_COLOR_MAP['未分类'],
+            color: COLOR_MAP[tag] || COLOR_MAP[TagEnum.UNTAG],
+            bgColor: BG_COLOR_MAP[tag] || BG_COLOR_MAP[TagEnum.UNTAG],
             posts: [],
           };
           if (!tagMapping[tag]) {
@@ -45,7 +45,10 @@ export default createContentLoader('**/*.md', {
         ...rest,
         name,
         posts: postList
-          .filter(({ tags }) => tags.includes(name))
+          .filter(
+            ({ tags, frontmatter }) =>
+              tags.includes(name) && !!frontmatter.title,
+          )
           .map(({ index }) => index),
       };
     });

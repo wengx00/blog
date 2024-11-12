@@ -4,18 +4,20 @@
       <AppHeader />
     </div>
     <div class="app-root__content">
-      <template v-if="page.isNotFound">
-        <NotFoundLayout />
-      </template>
-      <template v-else-if="frontmatter.home">
-        <HomeLayout />
-      </template>
-      <template v-else-if="frontmatter.archive">
-        <ArchiveLayout />
-      </template>
-      <template v-else>
-        <PostLayout />
-      </template>
+      <Transition>
+        <template v-if="page.isNotFound">
+          <NotFoundLayout />
+        </template>
+        <template v-else-if="frontmatter.home">
+          <HomeLayout />
+        </template>
+        <template v-else-if="frontmatter.archive">
+          <ArchiveLayout />
+        </template>
+        <template v-else>
+          <PostLayout />
+        </template>
+      </Transition>
     </div>
   </div>
 </template>

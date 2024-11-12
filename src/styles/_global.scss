@@ -1,5 +1,17 @@
 @use './themes/index' as *;
 
+.v-enter-active {
+  transition: opacity 0.25s ease;
+}
+
+.v-enter-from {
+  opacity: 0;
+}
+.v-leave-to {
+  opacity: 0;
+  display: none;
+}
+
 // 代码块
 .vp-adaptive-theme {
   position: relative;

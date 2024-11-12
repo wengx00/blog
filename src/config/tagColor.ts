@@ -1,10 +1,17 @@
+import TagEnum from './tagEnum';
+
+export interface TagColor {
+  text: Record<TagEnum, string>;
+  background: Record<TagEnum, string>;
+}
+
 export default {
   text: {
-    未分类: 'var(--td-text-color-primary)',
-    更新日志: 'var(--td-text-color-anti)',
+    [TagEnum.UNTAG]: 'var(--td-text-color-primary)',
+    [TagEnum.BLOG]: 'var(--td-text-color-anti)',
   } as Record<string, string>,
   background: {
-    未分类: 'var(--td-bg-color-component)',
-    更新日志: 'var(--td-brand-color)',
+    [TagEnum.UNTAG]: 'var(--td-bg-color-component)',
+    [TagEnum.BLOG]: 'var(--td-brand-color)',
   } as Record<string, string>,
-};
+} as TagColor;

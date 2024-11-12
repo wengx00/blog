@@ -13,18 +13,8 @@
       >
         <template #icon> <LogoGithubIcon /> </template>
       </t-button>
-      <t-switch
-        :value="currentTheme"
-        class="item"
-        size="large"
-        :custom-value="['dark', 'light']"
-        :on-change="setTheme"
-      >
-        <template #label="{ value }">
-          <MoonIcon v-if="value === 'dark'" />
-          <SunnyIcon v-else />
-        </template>
-      </t-switch>
+      <MoonIcon v-if="currentTheme === 'dark'" size="20" />
+      <SunnyIcon v-else size="20" />
     </div>
   </div>
 </template>
@@ -40,7 +30,6 @@ const { site, theme } = useData();
 const router = useRouter();
 
 const { currentTheme } = storeToRefs(themeStore());
-const { setTheme } = themeStore();
 
 const toHomeHandler = () => {
   router.go(withBase('/'));
