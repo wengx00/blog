@@ -13,7 +13,7 @@
           <div class="date">{{ item.date }}</div>
         </div>
         <Button
-          v-if="data.length > recentIndex"
+          v-if="recentData.length > recentIndex"
           variant="outline"
           class="load-more"
           size="large"
@@ -22,6 +22,20 @@
         >
           加载更多
         </Button>
+      </div>
+      <div class="home-layout__section">
+        <div class="home-layout__section_title">标签归档</div>
+        <div
+          v-for="{ name, posts, bgColor } in tags"
+          :key="name"
+          class="home-layout__section_item"
+        >
+          <div class="tag-row">
+            <div :style="{ background: bgColor }" class="tag-color"></div>
+            <div class="tag-name">{{ name }}</div>
+          </div>
+          <div class="tag-post-count">{{ posts.length }} 篇</div>
+        </div>
       </div>
     </div>
   </div>
@@ -32,10 +46,12 @@ import { Button } from 'tdesign-vue-next';
 import { withBase } from 'vitepress';
 import { ref } from 'vue';
 
-import { data, type RootMetaData } from '@/loaders/root.data.js';
+import { data as archiveData } from '@/loaders/archive.data';
+import { data as recentData, type RootMetaData } from '@/loaders/root.data';
 import { dateUtils } from '@/utils';
 
 const DEFAULT_RENCENT_COUNT = 5;
+const { tags } = archiveData;
 
 const infoHandler = (data: RootMetaData) => {
   const {
@@ -58,17 +74,19 @@ const infoHandler = (data: RootMetaData) => {
 };
 
 // 近期博客
-const recentBlogs = ref(data.slice(0, DEFAULT_RENCENT_COUNT).map(infoHandler));
+const recentBlogs = ref(
+  recentData.slice(0, DEFAULT_RENCENT_COUNT).map(infoHandler),
+);
 const recentIndex = ref(DEFAULT_RENCENT_COUNT);
 
 // 加载更多
 const loadMore = () => {
-  if (recentIndex.value >= data.length) {
+  if (recentIndex.value >= recentData.length) {
     return;
   }
   const nextIndex = recentIndex.value + DEFAULT_RENCENT_COUNT;
   recentBlogs.value.push(
-    ...data.slice(recentIndex.value, nextIndex).map(infoHandler),
+    ...recentData.slice(recentIndex.value, nextIndex).map(infoHandler),
   );
   recentIndex.value = nextIndex;
 };
@@ -155,6 +173,30 @@ const goPostDetail = (url: string) => {
         cursor: pointer;
       }
     }
+  }
+
+  .tag-row {
+    @include flex(row, flex-start, center);
+
+    > * {
+      margin-right: 8px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    .tag-color {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+    }
+    .tag-name {
+      color: var(--td-text-color-secondary);
+    }
+  }
+  .tag-post-count {
+    color: var(--td-text-color-secondary);
+    font-size: 14px;
   }
 }
 </style>

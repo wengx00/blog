@@ -1,16 +1,13 @@
 import { createContentLoader } from 'vitepress';
 
-const BG_COLOR_MAP: Record<string, string> = {
-  未分类: 'var(--bg-color-component)',
-};
+import { tagColor } from '../config';
 
-const COLOR_MAP: Record<string, string> = {
-  未分类: 'var(--td-text-color-primary)',
-};
+const { background: BG_COLOR_MAP, text: COLOR_MAP } = tagColor;
 
 export default createContentLoader('**/*.md', {
   transform(rawData) {
-    const tagMapping = new Map<string, ArchiveMetaData[]>();
+    const tagMapping: Record<string, TagMetaData> = {};
+    const postList: ArchiveMetaData[] = [];
     rawData.forEach((item, index) => {
       const { frontmatter } = item;
       const curTags = frontmatter.tags || frontmatter.tag || [];
@@ -20,7 +17,7 @@ export default createContentLoader('**/*.md', {
       if (!tagList.length) {
         tagList.push('未分类');
       }
-      const tagInfoList = tagList
+      const pureTagList = tagList
         .map((tag) => tag.trim())
         .filter(Boolean)
         .map((tag) => {
@@ -28,41 +25,59 @@ export default createContentLoader('**/*.md', {
             name: tag,
             color: COLOR_MAP[tag] || COLOR_MAP['未分类'],
             bgColor: BG_COLOR_MAP[tag] || BG_COLOR_MAP['未分类'],
+            posts: [],
           };
-          return tagItem;
+          if (!tagMapping[tag]) {
+            tagMapping[tag] = tagItem;
+          }
+          return tag;
         });
-      tagInfoList.forEach(({ name }) => {
-        const postList = tagMapping.get(name) || [];
-        if (postList.find(({ index: idx }) => index === idx)) {
-          return;
-        }
-        postList.push({
-          ...item,
-          index,
-          tags: tagInfoList,
-        });
-        tagMapping.set(name, postList);
-      });
+      const uniqueTagList = Array.from(new Set(pureTagList));
+      const postItem = {
+        index,
+        tags: uniqueTagList,
+        ...item,
+      };
+      postList.push(postItem);
     });
+    Object.values(tagMapping).forEach(({ name, ...rest }) => {
+      tagMapping[name] = {
+        ...rest,
+        name,
+        posts: postList
+          .filter(({ tags }) => tags.includes(name))
+          .map(({ index }) => index),
+      };
+    });
+    return {
+      tags: tagMapping,
+      posts: postList,
+    };
   },
 });
 
 export interface ArchiveMetaData {
   url: string;
-  index: number;
   frontmatter: {
     date?: string;
     title?: string;
     description?: string;
   };
-  tags: {
-    name: string;
-    color?: string;
-    bgColor?: string;
-  }[];
+  tags: string[];
+  index: number;
 }
 
-export type ArchiveData = Record<string, ArchiveMetaData[]>;
+export interface TagMetaData {
+  name: string;
+  color: string;
+  bgColor: string;
+  posts: number[];
+}
+
+export type ArchiveData = {
+  tags: Record<string, TagMetaData>;
+  posts: ArchiveMetaData[];
+};
 declare const data: ArchiveData;
 
 export { data };
