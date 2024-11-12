@@ -10,6 +10,9 @@
       <template v-else-if="frontmatter.home">
         <HomeLayout />
       </template>
+      <template v-else-if="frontmatter.archive">
+        <ArchiveLayout />
+      </template>
       <template v-else>
         <PostLayout />
       </template>
@@ -22,6 +25,7 @@ import { useData } from 'vitepress';
 import { onMounted } from 'vue';
 
 import AppHeader from './components/AppHeader/index.vue';
+import ArchiveLayout from './layouts/ArchiveLayout.vue';
 import HomeLayout from './layouts/HomeLayout.vue';
 import NotFoundLayout from './layouts/NotFoundLayout.vue';
 import PostLayout from './layouts/PostLayout.vue';

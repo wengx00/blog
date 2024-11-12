@@ -29,6 +29,7 @@
           v-for="{ name, posts, bgColor } in tags"
           :key="name"
           class="home-layout__section_item"
+          @click="goArchive(name)"
         >
           <div class="tag-row">
             <div :style="{ background: bgColor }" class="tag-color"></div>
@@ -43,7 +44,7 @@
 
 <script setup lang="ts">
 import { Button } from 'tdesign-vue-next';
-import { withBase } from 'vitepress';
+import { useRouter, withBase } from 'vitepress';
 import { ref } from 'vue';
 
 import { data as archiveData } from '@/loaders/archive.data';
@@ -52,6 +53,8 @@ import { dateUtils } from '@/utils';
 
 const DEFAULT_RENCENT_COUNT = 5;
 const { tags } = archiveData;
+
+const router = useRouter();
 
 const infoHandler = (data: RootMetaData) => {
   const {
@@ -92,7 +95,11 @@ const loadMore = () => {
 };
 
 const goPostDetail = (url: string) => {
-  window.open(withBase(url));
+  router.go(withBase(url));
+};
+
+const goArchive = (name: string) => {
+  router.go(withBase(`/archive/${name}`));
 };
 </script>
 
