@@ -4,4 +4,5 @@ export default {
   lang: 'zh-CN',
   base: '/',
   lastUpdated: true,
+  ignoreDeadLinks: true,
 };

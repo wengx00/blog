@@ -43,7 +43,7 @@ const displayTags = computed(() => {
   if (!name) {
     return Object.values(tags);
   }
-  return [tags[name]];
+  return [tags[name]].filter(Boolean);
 });
 
 const getPostListByIndex = (indexList: number[]) => {

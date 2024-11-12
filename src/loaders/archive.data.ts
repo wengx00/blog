@@ -49,6 +49,18 @@ export default createContentLoader('**/*.md', {
             ({ tags, frontmatter }) =>
               tags.includes(name) && !!frontmatter.title,
           )
+          .sort((a, b) => {
+            if (!a.frontmatter.date) {
+              return 1;
+            }
+            if (!b.frontmatter.date) {
+              return -1;
+            }
+            return (
+              new Date(b.frontmatter.date).getTime() -
+              new Date(a.frontmatter.date).getTime()
+            );
+          })
           .map(({ index }) => index),
       };
     });
