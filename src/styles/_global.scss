@@ -12,6 +12,15 @@
   display: none;
 }
 
+.table-of-contents {
+  ul {
+    padding-inline-start: 16px;
+  }
+  li {
+    list-style: none;
+  }
+}
+
 // 代码块
 .vp-adaptive-theme {
   position: relative;
@@ -118,20 +127,20 @@
   border-radius: 8px;
   margin: 8px 0;
   &.info {
-    background-color: var(--td-brand-color-2);
-    border: 2px solid var(--td-brand-color-3);
+    background-color: var(--td-brand-color-1);
+    border: 2px solid var(--td-brand-color-2);
   }
   &.danger {
-    background-color: var(--td-error-color-2);
-    border: 2px solid var(--td-error-color-3);
+    background-color: var(--td-error-color-1);
+    border: 2px solid var(--td-error-color-2);
   }
   &.warning {
-    background-color: var(--td-warning-color-2);
-    border: 2px solid var(--td-warning-color-3);
+    background-color: var(--td-warning-color-1);
+    border: 2px solid var(--td-warning-color-2);
   }
   &.tip {
-    background-color: var(--td-success-color-2);
-    border: 2px solid var(--td-success-color-3);
+    background-color: var(--td-success-color-1);
+    border: 2px solid var(--td-success-color-2);
   }
 }
 
