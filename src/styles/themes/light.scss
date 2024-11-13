@@ -1,5 +1,4 @@
-html,
-html[theme-mode='light'] {
+@mixin lightTheme() {
   --brand-color: #3370ff;
   --brand-color-1: #4e83fd;
   --brand-color-2: #5e92f3;
@@ -59,5 +58,14 @@ html[theme-mode='light'] {
     font-style: var(--shiki-light-font-style) !important;
     font-weight: var(--shiki-light-font-weight) !important;
     text-decoration: var(--shiki-light-text-decoration) !important;
+  }
+}
+
+html {
+  @media (prefer-color-scheme: light) {
+    @include lightTheme();
+  }
+  &[theme-mode='light'] {
+    @include lightTheme();
   }
 }

@@ -1,4 +1,4 @@
-html[theme-mode='dark'] {
+@mixin darkTheme() {
   --brand-color: #61afef;
   --brand-color-1: #569cd6;
   --brand-color-2: #4080a8;
@@ -58,5 +58,14 @@ html[theme-mode='dark'] {
     font-style: var(--shiki-dark-font-style) !important;
     font-weight: var(--shiki-dark-font-weight) !important;
     text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
+}
+
+html {
+  @media (prefer-color-scheme: dark) {
+    @include darkTheme();
+  }
+  &[theme-mode='dark'] {
+    @include darkTheme();
   }
 }
