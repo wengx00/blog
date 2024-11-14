@@ -10,10 +10,12 @@ export default {
     [TagEnum.UNTAG]: 'var(--td-text-color-primary)',
     [TagEnum.BLOG]: 'var(--td-text-color-anti)',
     [TagEnum.WEB_FE]: 'var(--td-text-color-anti)',
+    [TagEnum.NETWORK]: 'var(--td-text-color-anti)',
   } as Record<string, string>,
   background: {
     [TagEnum.UNTAG]: 'var(--td-bg-color-component)',
     [TagEnum.BLOG]: 'var(--td-brand-color)',
     [TagEnum.WEB_FE]: 'var(--td-success-color)',
+    [TagEnum.NETWORK]: 'var(--td-warning-color)',
   } as Record<string, string>,
 } as TagColor;
