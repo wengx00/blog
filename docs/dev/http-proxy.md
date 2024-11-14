@@ -86,8 +86,8 @@ HTTP 通信中，每次请求 / 响应都是一个个 HTTP 数据包，如果我
 
 它的安装方法见：
 
-- [Windows](../frontend/setup-windows.md#_2-4-安装-npm-全局包)
-- [macOS](../frontend/setup-macos.md#_5-3-安装-npm-全局包)
+- [Windows](../fe/setup-windows.md#_2-4-安装-npm-全局包)
+- [macOS](../fe/setup-macos.md#_5-3-安装-npm-全局包)
 
 验证是否已经安装
 
