@@ -115,3 +115,8 @@ console.log(totalPrice.value); // Output: 800
 1. Vue3：https://github.com/vuejs/core/blob/main/packages/reactivity/src/reactive.ts#L76
 2. Omi：https://github.com/Tencent/omi/blob/master/packages/reactive-signal/src/reactivity.ts
 3. Preact：https://github.com/preactjs/signals/blob/main/packages/core/src/index.ts
+
+***推荐看 Vue Mastery 的视频 / 文档***
+
+1. Vue Mastery 原课程：https://www.vuemastery.com/courses/vue-3-reactivity/vue3-reactivity
+2. 中英翻译版：https://www.bilibili.com/video/BV1SZ4y1x7a9/
