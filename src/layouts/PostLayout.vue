@@ -7,20 +7,22 @@
       <div v-if="updatedAt" class="post-root__content_time">
         <div>更新于: {{ updatedAt }}</div>
       </div>
-      <Giscus 
-        repo="wengx00/blog"
-        repo-id="R_kgDONJGyDw"
-        category="Announcements"
-        category-id="DIC_kwDONJGyD84CkStq"
-        mapping="pathname"
-        strict="0"
-        reactions-enabled="1"
-        emit-metadata="0"
-        input-position="top"
-        theme="preferred_color_scheme"
-        lang="zh-CN"
-        crossorigin="anonymous"
-      />
+      <div class="post-root__content_comment">
+        <Giscus 
+          repo="wengx00/blog"
+          repo-id="R_kgDONJGyDw"
+          category="Announcements"
+          category-id="DIC_kwDONJGyD84CkStq"
+          mapping="pathname"
+          strict="0"
+          reactions-enabled="1"
+          emit-metadata="0"
+          input-position="top"
+          theme="preferred_color_scheme"
+          lang="zh-CN"
+          crossorigin="anonymous"
+        />
+      </div>
       <SafeBottom />
     </div>
     <div class="post-root__menu"></div>
@@ -75,6 +77,11 @@ const updatedAt = computed(() => {
       @include padding(0 0 0 4px);
       color: var(--td-text-color-secondary);
       font-size: 12px;
+    }
+
+    &_comment {
+      @include padding(36px 0 0 0);
+      width: 100%;
     }
   }
 
