@@ -19,7 +19,6 @@
         input-position="top"
         theme="preferred_color_scheme"
         lang="zh-CN"
-        loading="lazy"
         crossorigin="anonymous"
       />
       <SafeBottom />
