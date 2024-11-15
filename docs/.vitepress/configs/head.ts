@@ -21,4 +21,20 @@ export default [
       content: 'codeva-zqZt8oKCIH',
     },
   ],
+  [
+    'meta',
+    {
+      name: 'theme-color',
+      media: '(prefers-color-scheme: light)',
+      content: '#fafafa',
+    },
+  ],
+  [
+    'meta',
+    {
+      name: 'theme-color',
+      media: '(prefers-color-scheme: dark)',
+      content: '#1e1e1e',
+    },
+  ],
 ];
