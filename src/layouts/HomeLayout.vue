@@ -40,6 +40,7 @@
           <div class="tag-post-count">{{ posts.length }} 篇</div>
         </div>
       </div>
+      <SafeBottom />
     </div>
   </div>
 </template>
@@ -49,6 +50,7 @@ import { Button } from 'tdesign-vue-next';
 import { useRouter, withBase } from 'vitepress';
 import { ref } from 'vue';
 
+import SafeBottom from '@/components/SafeBottom/index.vue';
 import { data as archiveData } from '@/loaders/archive.data';
 import { data as recentData, type RootMetaData } from '@/loaders/root.data';
 import { dateUtils } from '@/utils';

@@ -22,6 +22,7 @@
           </div>
         </div>
       </div>
+      <SafeBottom />
     </div>
   </div>
 </template>
@@ -30,6 +31,7 @@
 import { useData, useRouter, withBase } from 'vitepress';
 import { computed } from 'vue';
 
+import SafeBottom from '@/components/SafeBottom/index.vue';
 import { data as archiveData } from '@/loaders/archive.data';
 import { dateUtils } from '@/utils';
 
