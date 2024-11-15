@@ -2,6 +2,7 @@ import {
   basic,
   head,
   markdown,
+  sitemap,
   themeConfig,
   transformPageData,
   vite,
@@ -15,4 +16,5 @@ export default {
   markdown,
   themeConfig,
   transformPageData,
+  sitemap,
 };
