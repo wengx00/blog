@@ -1,3 +1,3 @@
 export default {
-  hostname: 'https://www.ccwen.cc',
+  hostname: 'https://www.ccweng.cc',
 };
