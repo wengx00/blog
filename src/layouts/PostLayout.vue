@@ -3,7 +3,7 @@
     <div class="post-root__sidebar"></div>
     <div class="post-root__content">
       <Content />
-      <CopyRight />
+      <CopyRight style="margin-top: 48px" />
       <div v-if="updatedAt" class="post-root__content_time">
         <div>更新于: {{ updatedAt }}</div>
       </div>

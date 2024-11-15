@@ -3,21 +3,23 @@
     <div class="home-layout">
       <div class="home-layout__section">
         <div class="home-layout__section_title">近期博客</div>
-        <div
-          v-for="(item, index) in recentBlogs"
-          :key="index"
-          class="home-layout__section_item"
-          @click="goPostDetail(item.url)"
-        >
-          <div class="title">{{ item.title }}</div>
-          <div class="date">{{ item.date }}</div>
-        </div>
+        <TransitionGroup name="list">
+          <div
+            v-for="(item, index) in recentBlogs"
+            :key="index"
+            class="home-layout__section_item"
+            @click="goPostDetail(item.url)"
+          >
+            <div class="title">{{ item.title }}</div>
+            <div class="date">{{ item.date }}</div>
+          </div>
+        </TransitionGroup>
         <Button
           v-if="recentData.length > recentIndex"
-          variant="outline"
+          variant="text"
           class="load-more"
-          size="large"
           theme="default"
+          size="large"
           @click="loadMore"
         >
           加载更多
@@ -205,5 +207,15 @@ const goArchive = (name: string) => {
     color: var(--td-text-color-secondary);
     font-size: 14px;
   }
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.3s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
 }
 </style>
