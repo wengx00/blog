@@ -7,6 +7,21 @@
       <div v-if="updatedAt" class="post-root__content_time">
         <div>更新于: {{ updatedAt }}</div>
       </div>
+      <Giscus 
+        repo="wengx00/blog"
+        repo-id="R_kgDONJGyDw"
+        category="Announcements"
+        category-id="DIC_kwDONJGyD84CkStq"
+        mapping="pathname"
+        strict="0"
+        reactions-enabled="1"
+        emit-metadata="0"
+        input-position="top"
+        theme="preferred_color_scheme"
+        lang="zh-CN"
+        loading="lazy"
+        crossorigin="anonymous"
+      />
       <SafeBottom />
     </div>
     <div class="post-root__menu"></div>
@@ -19,6 +34,8 @@ import { computed } from 'vue';
 
 import CopyRight from '@/components/CopyRight/index.vue';
 import SafeBottom from '@/components/SafeBottom/index.vue';
+import Giscus from '@giscus/vue';
+
 import { dateUtils } from '@/utils';
 
 const { page } = useData();

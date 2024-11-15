@@ -15,6 +15,7 @@
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
+    "@giscus/vue": "^3.0.0",
     "@mdit/plugin-tasklist": "^0.13.1",
     "pinia": "^2.2.5",
     "pinia-plugin-persistedstate": "^4.1.2",
